@@ -1,0 +1,35 @@
+.btn {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  background: slateblue;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  /* Hover-out animation (return to equilibrium) is longer */
+  transition: transform 450ms;
+  /* transition-property takes a special value: all. I recommend **not** using it */
+  will-change: transform;
+  /* the browser will let the GPU handle this element all the time */
+  /* don't broadly apply will-change to elements that won't move. Be intentional about where you use it */
+  transition-delay: 300ms;
+}
+
+.btn:hover {
+  /* Hover in is faster than hover out */
+  transition: transform 125ms;
+  transform: translateY(-10px);
+  transition-delay: 0ms;
+}
+
+/* Think less in terms of states (hovered / not-hovered) and more in terms of actions (hover-in, hover-out) */
+/*  Read also https://tobiasahlin.com/blog/meaningful-motion-w-action-driven-animation/ */
+
+/* disabling animations for folks who request it */
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}

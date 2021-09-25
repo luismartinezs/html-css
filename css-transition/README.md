@@ -1,0 +1,1 @@
+Based on https://www.joshwcomeau.com/animation/css-transitions/
