@@ -1,0 +1,85 @@
+body {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+:root {
+  --hue: 320deg;
+  --front: hsl(var(--hue), 100%, 50%);
+  --edge: hsl(var(--hue), 100%, 35%);
+  --edge-grad: 90deg, hsl(var(--hue), 100%, 25%), var(--edge) 10%,
+    var(--edge) 90%, hsl(var(--hue), 100%, 25%);
+  --shadow: hsl(var(--hue), 30%, 60%);
+  --br: 8px;
+}
+
+.pushable {
+  position: relative;
+  background: transparent;
+  border: none;
+  border-radius: var(--br);
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 6px;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.pushable:hover {
+  filter: brightness(1.1);
+}
+
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pushable .shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--br);
+  background: var(--shadow);
+  transform: translateY(6px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.9, 1);
+  filter: blur(2px);
+}
+
+.pushable .edge {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--br);
+  background: linear-gradient(var(--edge-grad));
+}
+.pushable .front {
+  display: block;
+  padding: 20px 56px;
+  background: var(--front);
+  border-radius: var(--br);
+  font-size: 1.3rem;
+  /* color: hsl(0, 0%, 20%, 0.8); */
+  color: white;
+  transform: translateY(-8px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.9, 1);
+}
+
+.pushable:hover .front {
+  transform: translateY(-10px);
+  transition: transform 200ms cubic-bezier(0.3, 0.7, 0.9, 1.5);
+}
+
+.pushable:active .front {
+  transform: translateY(-2px);
+  transition: transform 50ms cubic-bezier(0.3, 0.7, 0.9, 1);
+}
+
+.pushable:hover .shadow {
+  transform: translateY(7px);
+  transition: transform 200ms cubic-bezier(0.3, 0.7, 0.9, 1.5);
+}
+
+.pushable:active .shadow {
+  transform: translateY(1px);
+  transition: transform 50ms cubic-bezier(0.3, 0.7, 0.9, 1);
+}
