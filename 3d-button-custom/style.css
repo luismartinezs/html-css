@@ -1,0 +1,57 @@
+body {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.pushable {
+  display: block;
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.pushable:focus-visible {
+  outline: solid transparent;
+}
+
+.pushable:focus-visible .front {
+  border: 2px solid hsl(220deg, 100%, 50%);
+  padding: 18px 40px;
+}
+
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.pushable .shadow {
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: hsl(200deg, 5%, 70%);
+  transform: translateY(-10px) translateX(10px);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.9, 1);
+}
+
+.pushable .front {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  background: hsl(200deg, 90%, 50%);
+  color: white;
+  padding: 20px 42px;
+  font-size: 1.5rem;
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.9, 1);
+}
+
+.pushable:hover .front {
+  transform: translateY(4px) translateX(-4px);
+  transition: transform 200ms cubic-bezier(0.3, 0.7, 0.9, 1.5);
+  filter: brightness(1.05);
+}
+
+.pushable:active .front {
+  transform: translateY(-10px) translateX(10px);
+  transition: transform 50ms cubic-bezier(0.3, 0.7, 0.9, 1);
+}
